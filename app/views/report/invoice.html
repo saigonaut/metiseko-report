@@ -1,0 +1,177 @@
+<div class="page page-table" data-ng-controller="invoiceReportCtrl">
+
+  <section class="panel panel-default table-dynamic">
+      <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> invoices Report</strong></div>
+      <div class="page page-table">
+      <div class="table-filters">
+          <div class="row">
+              <div class="col-sm-3">
+                  <span class="ui-select">
+                      <select>
+                          <option value="" class="" selected="selected">All shop</option>
+                          <option label="140-142 Tran Phu" value="string:5c3c9954-4edb-4ee3-888d-ea97c404462e">140-142 Tran Phu</option><option label="Sai Gon" value="string:22b08761-7be1-466c-90a0-960bfcba6c00">Sai Gon</option><option label="Sunsire Hotel" value="string:3636025a-e705-4962-844f-68e37f5dccb0">Sunsire Hotel</option><option label="Victoria Hotel" value="string:24fea13b-fc2b-4d27-a763-bd2f4871c4d7">Victoria Hotel</option>
+                      </select>
+                  </span>
+              </div>
+         
+              <div class="col-sm-3" data-ng-controller="DatepickerDemoCtrl">
+                  <div class="input-group ui-datepicker">
+                      <input type="text" 
+                             class="form-control"
+                             datepicker-popup="{{format}}"
+                             ng-model="dt"
+                             is-open="opened"
+                             min="minDate"
+                             max="'2015-06-22'"
+                             datepicker-options="dateOptions" 
+                             date-disabled="disabled(date, mode)"
+                             ng-required="true" 
+                             close-text="Close">
+                      <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  
+              </div>
+              <div class="col-sm-3" data-ng-controller="DatepickerDemoCtrl">
+                    <div class="input-group ui-datepicker">
+                        <input type="text" 
+                               class="form-control"
+                               datepicker-popup="{{format}}"
+                               ng-model="dt"
+                               is-open="opened"
+                               min="minDate"
+                               max="'2015-06-22'"
+                               datepicker-options="dateOptions" 
+                               date-disabled="disabled(date, mode)"
+                               ng-required="true" 
+                               close-text="Close">
+                        <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+          </div>
+      </div>
+      <table class="table table-bordered table-striped table-responsive">
+          <thead>
+              <tr>
+                  <th><div class="th">
+                      Shop
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('shop') "
+                            data-ng-class="{active: row == 'shop'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-shop') "
+                            data-ng-class="{active: row == '-shop'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Seller
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('seller') "
+                            data-ng-class="{active: row == 'seller'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-seller') "
+                            data-ng-class="{active: row == '-seller'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Customer
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('customer') "
+                            data-ng-class="{active: row == 'customer'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-customer') "
+                            data-ng-class="{active: row == '-customer'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Revenue (in 7 days)
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('revenue') "
+                            data-ng-class="{active: row == 'revenue'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-revenue') "
+                            data-ng-class="{active: row == '-revenue'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Item
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('item') "
+                            data-ng-class="{active: row == 'item'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-item') "
+                            data-ng-class="{active: row == '-item'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Date
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('date') "
+                            data-ng-class="{active: row == 'date'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-date') "
+                            data-ng-class="{active: row == '-date'}"></span>
+                  </div></th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr data-ng-repeat="invoice in currentPageInvoices">
+                  <td>{{invoice.shop}}</td>
+                  <td>{{invoice.seller}}</td>
+                  <td>{{invoice.customer}}</td>
+                  <td>{{invoice.revenue}}</td>
+                  <td><p ng-repeat="i in invoice.item" class="ng-binding ng-scope">Quantity: {{i.quantity}}. Name: {{i.name}}</p>
+                  </td>
+                  <td>{{invoice.date}}</td>
+                  <td>                    <!-- Modal -->
+                    <div class="panel-body" data-ng-controller="ModalDemoCtrl">
+                      <script type="text/ng-template" id="myModalContent.html">
+                          <div class="modal-header">
+                              <h3>I am a modal!</h3>
+                          </div>
+                          <div class="modal-body">
+                              <span ng-repeat="item in items" class="list-unstyled">
+                                  <label class="ui-radio"><input name="radio1" type="radio" value="{{ item }}"  ng-checked="selected.item === item" ng-click="selected.item = item"><span>{{ item }}</span></label>
+                              </span>
+                              <br>
+                              Selected: <b>{{ selected.item }}</b>
+                          </div>
+                          <div class="modal-footer">
+                              <button class="btn btn-primary" ng-click="ok()">OK</button>
+                              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                          </div>
+                      </script>
+                      <i class="fa fa-print" ng-click="open()"></i>
+                      <i class="fa fa-question-circle" ng-click="open()"></i>
+                      <i class="fa fa-pencil" ng-click="open()"></i>
+                    </div>
+                    <!-- end Modal -->
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <footer class="table-footer">
+          <div class="row">
+              <div class="col-md-6 page-num-info">
+                  <span>
+                      Show 
+                      <select data-ng-model="numPerPage"
+                              data-ng-options="num for num in numPerPageOpt"
+                              data-ng-change="onNumPerPageChange()">
+                      </select> 
+                      entries per page
+                  </span>
+              </div>
+              <div class="col-md-6 text-right pagination-container">
+                  <pagination class="pagination-sm"
+                              ng-model="currentPage"
+                              total-items="filteredinvoices.length"
+                              max-size="4"
+                              ng-change="select(currentPage)"
+                              items-per-page="numPerPage"
+                              rotate="false"
+                              previous-text="&lsaquo;" next-text="&rsaquo;"
+                              boundary-links="true"></pagination>
+              </div>
+          </div>
+      </footer>
+      </div>
+  </section>
+
+</div>

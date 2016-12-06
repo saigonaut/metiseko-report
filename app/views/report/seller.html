@@ -1,0 +1,125 @@
+<div class="page page-table" data-ng-controller="sellerReportCtrl">
+
+  <section class="panel panel-default table-dynamic">
+      <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Seller Report</strong></div>
+      <div class="page page-table">
+      <div class="table-filters">
+          <div class="row">
+              <div class="col-sm-3 col-xs-6" data-ng-controller="DatepickerDemoCtrl">
+                  <div class="input-group ui-datepicker">
+                      <input type="text" 
+                             class="form-control"
+                             datepicker-popup="{{format}}"
+                             ng-model="dt"
+                             is-open="opened"
+                             min="minDate"
+                             max="'2015-06-22'"
+                             datepicker-options="dateOptions" 
+                             date-disabled="disabled(date, mode)"
+                             ng-required="true" 
+                             close-text="Close">
+                      <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                  </div>
+              </div>
+              <div class="col-sm-3 col-xs-6" data-ng-controller="DatepickerDemoCtrl">
+                  <div class="input-group ui-datepicker">
+                        <input type="text" 
+                               class="form-control"
+                               datepicker-popup="{{format}}"
+                               ng-model="dt"
+                               is-open="opened"
+                               min="minDate"
+                               max="'2015-06-22'"
+                               datepicker-options="dateOptions" 
+                               date-disabled="disabled(date, mode)"
+                               ng-required="true" 
+                               close-text="Close">
+                        <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                    </div>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                    <form>
+                        <input type="text"
+                               placeholder="Search..."
+                               class="form-control"
+                               data-ng-model="searchKeywords"
+                               data-ng-keyup="search()">
+                    </form>
+                </div>
+                <div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span>
+                        Showing {{filteredSellers.length}}/{{sellers.length}} entries
+                    </span>              
+                </div>
+          </div>
+      </div>
+      <table class="table table-bordered table-striped table-responsive">
+          <thead>
+              <tr>
+                  <th><div class="th">
+                      Seller
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('name') "
+                            data-ng-class="{active: row == 'name'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-name') "
+                            data-ng-class="{active: row == '-name'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Store name
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('store_name') "
+                            data-ng-class="{active: row == 'store_name'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-store_name') "
+                            data-ng-class="{active: row == '-store_name'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Revenue (in 7 days)
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('revenue') "
+                            data-ng-class="{active: row == 'revenue'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-revenue') "
+                            data-ng-class="{active: row == '-revenue'}"></span>
+                  </div></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr data-ng-repeat="seller in currentPageSellers">
+                  <td>{{seller.name}}</td>
+                  <td>{{seller.store_name}}</td>
+                  <td>{{seller.revenue}}</td>
+              </tr>
+          </tbody>
+      </table>
+
+      <footer class="table-footer">
+          <div class="row">
+              <div class="col-md-6 page-num-info">
+                  <span>
+                      Show 
+                      <select data-ng-model="numPerPage"
+                              data-ng-options="num for num in numPerPageOpt"
+                              data-ng-change="onNumPerPageChange()">
+                      </select> 
+                      entries per page
+                  </span>
+              </div>
+              <div class="col-md-6 text-right pagination-container">
+                  <pagination class="pagination-sm"
+                              ng-model="currentPage"
+                              total-items="filteredSellers.length"
+                              max-size="4"
+                              ng-change="select(currentPage)"
+                              items-per-page="numPerPage"
+                              rotate="false"
+                              previous-text="&lsaquo;" next-text="&rsaquo;"
+                              boundary-links="true"></pagination>
+              </div>
+          </div>
+      </footer>
+      </div>
+  </section>
+
+</div>

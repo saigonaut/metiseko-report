@@ -1,0 +1,177 @@
+<div class="page page-table" data-ng-controller="productReportCtrl">
+
+  <section class="panel panel-default table-dynamic">
+      <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Products Report</strong></div>
+      <div class="page page-table">
+      <div class="table-filters">
+          <div class="row">
+              <div class="col-sm-3">
+                  <span class="ui-select">
+                      <select>
+                          <option value="" class="" selected="selected">All categories</option>
+                          <option label="ACCESSORIES" value="object:205">ACCESSORIES</option>
+                          <option label="----ACCESSORIES" value="object:206">----ACCESSORIES</option>
+                          <option label="----BAGS/WALLETS" value="object:207">----BAGS/WALLETS</option>
+                          <option label="----HATS" value="object:208">----HATS</option>
+                          <option label="----NOTEBOOKS" value="object:209">----NOTEBOOKS</option>
+                          <option label="CATEGORY" value="object:210">CATEGORY</option>
+                          <option label="CHILDREN CLOTHING" value="object:211">CHILDREN CLOTHING</option>
+                          <option label="----BABIES" value="object:212">----BABIES</option>
+                          <option label="----BOYS" value="object:213">----BOYS</option>
+                          <option label="----CHILDREN CLOTHING" value="object:214">----CHILDREN CLOTHING</option>
+                          <option label="----GIRLS" value="object:215">----GIRLS</option>
+                          <option label="CLOTHING" value="object:216">CLOTHING</option>
+                          <option label="----CLOTHING" value="object:217">----CLOTHING</option>
+                          <option label="----DRESSES" value="object:218">----DRESSES</option>
+                          <option label="----JACKETS" value="object:219">----JACKETS</option>
+                          <option label="----JUMPSUIT" value="object:220">----JUMPSUIT</option>
+                      </select>
+                  </span>
+                  <span class="ui-select">
+                      <select>
+                          <option value="" class="" selected="selected">All models</option><option label="3XL" value="string:898df448-4937-4389-82e6-ddb414b99c93">3XL</option><option label="AAROKI" value="string:91485b48-7950-45b1-828b-ef79729b262c">AAROKI</option><option label="AARON" value="string:f218f8d5-1cd8-4cbf-8df5-8c9d29fa0d9f">AARON</option><option label="ADELE" value="string:2ec1f4f0-70cc-4a85-b424-07a5ab2db9b2">ADELE</option><option label="AGATHA" value="string:e8a30e82-4e32-4647-aab5-5334eca16a10">AGATHA</option><option label="AKHA" value="string:bbde5a1f-e48f-4ab1-9e8d-13fc029f6d64">AKHA</option><option label="ALISTER" value="string:0fa901d2-971e-4848-97c7-fff53d5d1c39">ALISTER</option><option label="ALIX" value="string:eac46aa9-f5c7-45a5-b41b-e99cdce0630f">ALIX</option><option label="ALY" value="string:74401fa9-0482-413e-a410-6b0d6ad60e85">ALY</option><option label="ALY ROSE" value="string:0ec58e2d-6009-4c5e-bf53-02eed27c73e6">ALY ROSE</option><option label="AMERICANO" value="string:07eba847-dc4c-4d39-962a-74b86e13554a">AMERICANO</option>
+                      </select>
+                  </span>
+              </div>
+              <div class="col-sm-3">
+                  <span class="ui-select">
+                      <select>
+                          <option value="" class="" selected="selected">All collections</option><option label="1ST COLLEC" value="object:264">1ST COLLEC</option><option label="2D COLLEC" value="object:265">2D COLLEC</option><option label="3DCOLLEC" value="object:266">3DCOLLEC</option><option label="ESSENCE 140 TP" value="object:267">ESSENCE 140 TP</option><option label="FABRIC" value="object:268">FABRIC</option><option label="METIS" value="object:269">METIS</option><option label="METISEKO" value="object:270">METISEKO</option><option label="NEW TRALLERS" value="object:271">NEW TRALLERS</option><option label="NEW TRAVELERS" value="object:272">NEW TRAVELERS</option><option label="SAMLPE" value="object:273">SAMLPE</option><option label="SAMPLE" value="object:274">SAMPLE</option><option label="SPECAL" value="object:275">SPECAL</option><option label="SPECIAL" value="object:276">SPECIAL</option>
+                      </select>
+                  </span>
+                  <span class="ui-select">
+                      <select>
+                          <option>Pattern</option>
+                          <option>Graphic rice</option>
+                          <option>Into the wild</option>
+                      </select>
+                  </span>
+                
+              </div>
+         
+              <div class="col-sm-3" data-ng-controller="DatepickerDemoCtrl">
+                  <div class="input-group ui-datepicker mydatetimepicker">
+                      <input type="text" 
+                             class="form-control"
+                             datepicker-popup="{{format}}"
+                             ng-model="dt"
+                             is-open="opened"
+                             min="minDate"
+                             max="'2015-06-22'"
+                             datepicker-options="dateOptions" 
+                             date-disabled="disabled(date, mode)"
+                             ng-required="true" 
+                             close-text="Close">
+                      <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <div class="input-group ui-datepicker mydatetimepicker">
+                        <input type="text" 
+                               class="form-control"
+                               datepicker-popup="{{format}}"
+                               ng-model="dt"
+                               is-open="opened"
+                               min="minDate"
+                               max="'2015-06-22'"
+                               datepicker-options="dateOptions" 
+                               date-disabled="disabled(date, mode)"
+                               ng-required="true" 
+                               close-text="Close">
+                        <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                    </div>
+              </div>
+              <div class="col-sm-3">
+                    <form>
+                        <input type="text"
+                               placeholder="Search..."
+                               class="form-control"
+                               data-ng-model="searchKeywords"
+                               data-ng-keyup="search()">
+                    </form>
+                </div>
+                <div class="col-sm-3 col-xs-6 filter-result-info">
+                    <span class="show_number_total">
+                        Showing {{filteredProducts.length}}/{{products.length}} entries
+                    </span>              
+                </div>
+          </div>
+      </div>
+      <table class="table table-bordered table-striped table-responsive">
+          <thead>
+              <tr>
+                  <th><div class="th">
+                      Product Name
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('product_name') "
+                            data-ng-class="{active: row == 'product_name'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-product_name') "
+                            data-ng-class="{active: row == '-product_name'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Collection
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('collection') "
+                            data-ng-class="{active: row == 'collection'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-collection') "
+                            data-ng-class="{active: row == '-collection'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Pattern
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('collection') "
+                            data-ng-class="{active: row == 'collection'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-collection') "
+                            data-ng-class="{active: row == '-collection'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      Revenue (in 7 days)
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('pattern') "
+                            data-ng-class="{active: row == 'pattern'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-pattern') "
+                            data-ng-class="{active: row == '-pattern'}"></span>
+                  </div></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr data-ng-repeat="product in currentPageProducts">
+                  <td>{{product.product_name}}</td>
+                  <td>{{product.collection}}</td>
+                  <td>{{product.pattern}}</td>
+                  <td>{{product.revenue}}</td>
+              </tr>
+          </tbody>
+      </table>
+
+      <footer class="table-footer">
+          <div class="row">
+              <div class="col-md-6 page-num-info">
+                  <span>
+                      Show 
+                      <select data-ng-model="numPerPage"
+                              data-ng-options="num for num in numPerPageOpt"
+                              data-ng-change="onNumPerPageChange()">
+                      </select> 
+                      entries per page
+                  </span>
+              </div>
+              <div class="col-md-6 text-right pagination-container">
+                  <pagination class="pagination-sm"
+                              ng-model="currentPage"
+                              total-items="filteredProducts.length"
+                              max-size="4"
+                              ng-change="select(currentPage)"
+                              items-per-page="numPerPage"
+                              rotate="false"
+                              previous-text="&lsaquo;" next-text="&rsaquo;"
+                              boundary-links="true"></pagination>
+              </div>
+          </div>
+      </footer>
+      </div>
+  </section>
+
+</div>

@@ -1,0 +1,151 @@
+<div class="page page-table" data-ng-controller="supplyPatternReportCtrl">
+
+  <section class="panel panel-default table-dynamic">
+      <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Inventory Report</strong></div>
+      <div class="page page-table">
+      <div class="table-filters">
+          <div class="row">
+              <div class="col-sm-3">
+                  <span class="ui-select">
+                      <select>
+                          <option value="" class="" selected="selected">All shop</option>
+                          <option label="140-142 Tran Phu" value="string:5c3c9954-4edb-4ee3-888d-ea97c404462e">140-142 Tran Phu</option><option label="Sai Gon" value="string:22b08761-7be1-466c-90a0-960bfcba6c00">Sai Gon</option><option label="Sunsire Hotel" value="string:3636025a-e705-4962-844f-68e37f5dccb0">Sunsire Hotel</option><option label="Victoria Hotel" value="string:24fea13b-fc2b-4d27-a763-bd2f4871c4d7">Victoria Hotel</option>
+                      </select>
+                  </span>
+              </div>
+
+              <div class="col-sm-3" data-ng-controller="DatepickerDemoCtrl">
+                  <div class="input-group ui-datepicker">
+                      <input type="text" 
+                             class="form-control"
+                             datepicker-popup="{{format}}"
+                             ng-model="dt"
+                             is-open="opened"
+                             min="minDate"
+                             max="'2015-06-22'"
+                             datepicker-options="dateOptions" 
+                             date-disabled="disabled(date, mode)"
+                             ng-required="true" 
+                             close-text="Close">
+                      <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                  </div>
+              </div>
+              <div class="col-sm-3" data-ng-controller="DatepickerDemoCtrl">
+                    <div class="input-group ui-datepicker">
+                        <input type="text" 
+                               class="form-control"
+                               datepicker-popup="{{format}}"
+                               ng-model="dt"
+                               is-open="opened"
+                               min="minDate"
+                               max="'2015-06-22'"
+                               datepicker-options="dateOptions" 
+                               date-disabled="disabled(date, mode)"
+                               ng-required="true" 
+                               close-text="Close">
+                        <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+          </div>
+      </div>
+      <table class="table table-bordered table-striped table-responsive">
+          <thead>
+              <tr>
+                  <th><div class="th">
+                      PARTERN
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('model') "
+                            data-ng-class="{active: row == 'model'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-model') "
+                            data-ng-class="{active: row == '-model'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      TIMESQUARE
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('pattern') "
+                            data-ng-class="{active: row == 'pattern'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-pattern') "
+                            data-ng-class="{active: row == '-pattern'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      HO
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('size_xs') "
+                            data-ng-class="{active: row == 'size_xs'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-size_xs') "
+                            data-ng-class="{active: row == '-size_xs'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      TAM
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('size_s') "
+                            data-ng-class="{active: row == 'size_s'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-size_s') "
+                            data-ng-class="{active: row == '-size_s'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      CAO
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('size_m') "
+                            data-ng-class="{active: row == 'size_m'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-size_m') "
+                            data-ng-class="{active: row == '-size_m'}"></span>
+                  </div></th>
+                  <th><div class="th">
+                      LOI
+                      <span class="fa fa-angle-up"
+                            data-ng-click=" order('size_l') "
+                            data-ng-class="{active: row == 'size_l'}"></span>
+                      <span class="fa fa-angle-down"
+                            data-ng-click=" order('-size_l') "
+                            data-ng-class="{active: row == '-size_l'}"></span>
+                  </div></th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+              <tr data-ng-repeat="supply in currentPageSupply">
+                  <td>{{supply.pattern}}</td>
+                  <td>{{supply.timesquare}}</td>
+                  <td>{{supply.ho}}</td>
+                  <td>{{supply.tam}}</td>
+                  <td>{{supply.cao}}</td>
+                  <td>{{supply.loi}}</td>
+              </tr>
+          </tbody>
+      </table>
+
+      <footer class="table-footer">
+          <div class="row">
+              <div class="col-md-6 page-num-info">
+                  <span>
+                      Show 
+                      <select data-ng-model="numPerPage"
+                              data-ng-options="num for num in numPerPageOpt"
+                              data-ng-change="onNumPerPageChange()">
+                      </select> 
+                      entries per page
+                  </span>
+              </div>
+              <div class="col-md-6 text-right pagination-container">
+                  <pagination class="pagination-sm"
+                              ng-model="currentPage"
+                              total-items="filteredSuppyModel.length"
+                              max-size="4"
+                              ng-change="select(currentPage)"
+                              items-per-page="numPerPage"
+                              rotate="false"
+                              previous-text="&lsaquo;" next-text="&rsaquo;"
+                              boundary-links="true"></pagination>
+              </div>
+          </div>
+      </footer>
+      </div>
+  </section>
+
+</div>
