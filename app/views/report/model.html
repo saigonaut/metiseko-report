@@ -135,17 +135,17 @@
                   <th></th>
               </tr>
           </thead>
-          <tbody data-ng-repeat='supply in currentPageSupply'>
-            <tr>
-              <th rowspan="{{supply.pattern.length}}">{{supply.model}}</th>
-              <td>{{supply.pattern[0].name}}</td>
-            </tr>
-            <tr ng-repeat-start='supply in currentPageSupply'>
-              <th rowspan="{{supply.pattern.length}}">{{supply.model}}</th>
-              <td>{{supply.pattern[0].name}}</td>
-            </tr>
-            <tr ng-repeat-end ng-repeat='county in st.counties' ng-hide="$first">
-               <td>{{county.name}}</td>
+          <tbody>
+            <tr data-ng-repeat='supply in currentPageSupply'>
+              <td>{{supply.model}}</td>
+              <td>{{supply.pattern}}</td>
+              <td>{{supply.size[0]}}</td>
+              <td>{{supply.size[1]}}</td>
+              <td>{{supply.size[2]}}</td>
+              <td>{{supply.size[3]}}</td>
+              <td>{{supply.size[4]}}</td>
+              <td>{{supply.size[5]}}</td>
+              <td>{{supply.size[6]}}</td>
             </tr>
           </tbody>
       </table>

@@ -1605,67 +1605,28 @@
             var init;
             return $scope.supply = [{
                 model: "HANI",
-                pattern:[{
-                    name:"Hats poetry",
-                    size_xs:1,
-                    size_s:5,
-                    size_m:10,
-                    size_l: 1,
-                    size_xl:5,
-                    size_xxl:10,
-                    size_xxxl:10
-                }, {
-                    name:"Blue bird in summer",
-                    size_xs:1,
-                    size_s:5,
-                    size_m:10,
-                    size_l: 1,
-                    size_xl:5,
-                    size_xxl:10,
-                    size_xxxl:10
-                }]
+                pattern:"Hats poetry",
+                size:[1,5,10,1,5,10,10]
+            }, {
+                model: "HANI",
+                pattern:"Blue bird in summer",
+                size:[1,5,10,1,5,10,10]
             }, {
                 model: "CHURU",
-                pattern:[{
-                    name:"Traveller's palm",
-                    size_xs:1,
-                    size_s:5,
-                    size_m:10,
-                    size_l: 1,
-                    size_xl:5,
-                    size_xxl:10,
-                    size_xxxl:10
-                }, {
-                    name:"Graphic rice",
-                    size_xs:1,
-                    size_s:5,
-                    size_m:10,
-                    size_l: 1,
-                    size_xl:5,
-                    size_xxl:10,
-                    size_xxxl:10
-                }]
+                pattern:"Traveller's palm",
+                size:[1,5,10,1,5,10,10]
+            }, {
+                model: "CHURU",
+                pattern:"Graphic rice",
+                size:[1,5,10,1,5,10,10]
             }, {
                 model: "LAHA",
-                pattern:[{
-                    name:"Asian porcelain",
-                    size_xs:1,
-                    size_s:5,
-                    size_m:10,
-                    size_l: 1,
-                    size_xl:5,
-                    size_xxl:10,
-                    size_xxxl:10
-                }, {
-                    name:"Path",
-                    size_xs:1,
-                    size_s:5,
-                    size_m:10,
-                    size_l: 1,
-                    size_xl:5,
-                    size_xxl:10,
-                    size_xxxl:10
-                }]
+                pattern:"Asian porcelain",
+                size:[1,5,10,1,5,10,10]
+            }, {
+                model: "LAHA",
+                pattern:"Path",
+                size:[1,5,10,1,5,10,10]
             }], $scope.searchKeywords = "", $scope.filteredSupply = [], $scope.row = "", $scope.select = function(page) {
                 var end, start;
                 return start = (page - 1) * $scope.numPerPage, end = start + $scope.numPerPage, $scope.currentPageSupply = $scope.filteredSupply.slice(start, end)
